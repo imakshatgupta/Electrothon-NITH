@@ -1,18 +1,19 @@
 const Slot = require("../models/parkSpaceModel");
 
 const addSlot = async (req, res) => {
-  const { slotNo } = req.body;
-  const slot = await Slot.create({
-    slotNo,
-  });
-  if (slot) {
+  try {
+    for (let slotNo = 1; slotNo <= 69; slotNo++) {
+      await Slot.create({ slotNo });
+    }
     res.status(201).json({
-      Success: "Slot Added Successfully!",
+      Success: "Slots Added Successfully!",
     });
-  } else {
-    res.status(400);
+  } catch (error) {
+    console.error("Error:", error.message);
+    res.status(400).json({ error: "Failed to add slots" });
   }
 };
+
 
 const allSlot = async (req, res) => {
   const slot = await Slot.find();
@@ -24,18 +25,15 @@ const allSlot = async (req, res) => {
 };
 
 const slotEntry = async (req, res) => {
-  const alreadySlot = await Slot.find({ slotNo: req.body.slotId });
-  if (alreadySlot.length > 0) {
-    return res.status(201).json({
-      Success: "Already Booked"
-    });
-  }
-  const slot = await Slot.create({
-    inTime: Date.now(),
-    slotNo: req.body.slotId,
-  });
+  const id = req.body.slotId;
+  const carOwnerId = req.body.carOwner;
+  const slot = await Slot.findById(id);
   if (slot) {
-    res.status(201).json({
+    slot.occupied = true;
+    slot.carOwner = carOwnerId;
+    slot.inTime = Date.now();
+    slot.save();
+    res.status(200).json({
       Success: "Slot Entry Successful!",
     });
   } else {
@@ -43,18 +41,18 @@ const slotEntry = async (req, res) => {
   }
 };
 
-
 const slotExit = async (req, res) => {
     const id = req.body.id;
-    const slot = await Slot.findById({slotNo: id});
+    const slot = await Slot.findById(id);
     if (slot) {
+        slot.occupied = false;
+        slot.carOwner = "";
         const inTime = slot.inTime;
         const inTimeInt = parseInt(inTime);
         const totalTime = Date.now() - inTimeInt;
         console.log(totalTime);
         const minutes = Math.floor((totalTime % 3600000) / 60000);
         slot.inTime = "";
-        slot.slotNo = "";
         slot.save();
         res.status(200).json({
         Success: "Slot Exit Successful!",
