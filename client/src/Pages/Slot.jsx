@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import QRCode from "qrcode.react";
 import Navbar from "../Components/Navbar";
 import { toast } from "react-toastify";
@@ -12,7 +12,7 @@ const Slot = () => {
   const [bookingData, setBookingData] = useState(null);
   const [price, setPrice] = useState("");
   const [freeSlot, setFreeSlot] = useState(0);
-  const [incomingSlot, setIncomingSlot] = useState();
+  const [incomingSlot, setIncomingSlot] = useState([]);
 
   useEffect(() => {
     getSlot();
@@ -23,9 +23,9 @@ const Slot = () => {
       const response = await axios.get("http://192.168.163.177:5000/update");
       const data = response.data.slots;
       const currentPrice = response.data.price;
-      const freeSlot = response.data.freeslots; 
+      const freeSlots = response.data.freeslots; 
       console.log(data);
-      setFreeSlot(freeSlot);
+      setFreeSlot(freeSlots);
       setPrice(currentPrice);
       setIncomingSlot(data);
     } catch (error) {

@@ -1,12 +1,17 @@
-import React from 'react';
-import { FaSearchLocation, FaCalendarAlt, FaCar } from 'react-icons/fa';
+import React from "react";
+import { FaSearchLocation, FaCalendarAlt, FaCar } from "react-icons/fa";
 
 const Working = () => {
   return (
     <div className="container mx-auto px-4 py-8 shadow-xl">
       <div className="flex justify-between flex-col items-center mb-8 gap-4">
-        <h1 className="text-3xl font-bold text-gray-800">How Turbo Car Rental Works</h1>
-        <p className="text-gray-500">The proper business solution for your developing business strategies and corporation</p>
+        <h1 className="text-3xl font-bold text-gray-800 leading-snug">
+          How Turbo Car Rental Works
+        </h1>
+        <p className="text-gray-500">
+          The proper business solution for your developing business strategies
+          and corporation
+        </p>
       </div>
       <div className="grid grid-cols-3 gap-4">
         <div className="text-center">
@@ -27,6 +32,6 @@ const Working = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Working;
