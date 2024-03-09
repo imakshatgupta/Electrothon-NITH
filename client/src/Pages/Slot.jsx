@@ -76,6 +76,7 @@ const Slot = () => {
   };
 
   return (
+<<<<<<< HEAD
 <div className="container mx-auto px-4">
   <Navbar />
   <h2 className="text-5xl font-bold text-center p-[100px] mb-4">Slots</h2>
@@ -85,6 +86,22 @@ const Slot = () => {
     {[...Array(6)].map((_, colIndex) => (
       <div key={colIndex} className="grid grid-cols-1 gap-4">
         {slots.slice(colIndex * 10, (colIndex + 1) * 10).map((slot, index) => (
+=======
+    <div className="container mx-auto px-4">
+      <Navbar />
+      <h2 className="text-5xl font-bold text-center p-[10px] mb-4">Slots</h2>
+      <div className="flex justify-evenly items-center p-[20px]">
+        <h3>
+          <span className="font-bold"> Current Price for Slot</span> : Rs.{" "}
+          {price}/hr
+        </h3>
+        <h3>
+          <span className="font-bold">Free Slots </span> : {freeSlot}
+        </h3>
+      </div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-12 gap-4">
+        {slots.map((slot) => (
+>>>>>>> 80772bde353a8241605275d4fb7479420989fe67
           <div
             key={slot.slotNo}
             onClick={() => handleSlotBook(slot.slotNo)}
@@ -92,9 +109,13 @@ const Slot = () => {
               slot.isFree ? "bg-green-500" : "bg-red-400"
             }`}
           >
+<<<<<<< HEAD
             <p className="font-bold text-[50px] text-center">
               {(colIndex * 12) + index + 1}
             </p>
+=======
+            <p className="font-bold text-[20px] text-center">{slot.slotNo}</p>
+>>>>>>> 80772bde353a8241605275d4fb7479420989fe67
           </div>
         ))}
       </div>
