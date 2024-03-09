@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.link {
+  text-decoration: none;
+}
+
+body {
+  /* background: linear-gradient(90deg, rgb(120, 194, 212) 2%, rgb(135, 188, 204) 35%, rgb(123, 203, 215) 100%); */
+  background-color: #ffffff;
+  overflow-x: hidden;
+  color:black;
+  /* background-image: url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvdjU0NmJhdGNoMy1teW50LTM0LWJhZGdld2F0ZXJjb2xvcl8xLmpwZw.jpg'); */
+}
