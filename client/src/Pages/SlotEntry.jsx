@@ -3,6 +3,7 @@ import { Scanner } from "@yudiel/react-qr-scanner";
 import { useNavigate } from "react-router-dom";
 import { to } from "@react-spring/web";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 
 const SlotEntry = () => {
@@ -17,16 +18,19 @@ const SlotEntry = () => {
 
   const qrData = async (text) => {
     const slotBooking = JSON.parse(text);
-    console.log("hiiiiiiii")
-    const slotEntry = await fetch("http://localhost:8000/parking/slotEntry", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        slotId: slotBooking.slotId,      }),
+    const slotEntry = await axios.post("http://localhost:8000/parking/slotEntry", {
+      slotId: slotBooking.slotId,
     });
-    const data = await slotEntry.json();
+    const data = slotEntry.data;
+    // const slotEntry = await fetch("http://localhost:8000/parking/slotEntry", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     slotId: slotBooking.slotId,      }),
+    // });
+    // const data = await slotEntry.json();
     console.log(data);
     // await redirect();
   };
