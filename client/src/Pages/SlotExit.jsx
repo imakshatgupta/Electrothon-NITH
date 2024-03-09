@@ -84,12 +84,11 @@ const SlotExit = () => {
     console.log(data.payableAmount);
     setPayableAmount(data.payableAmount);
     setShowModal(true);
-    // await handleProceed(data.payableAmount);
   };
 
-  const handlePayWithRazorpay = () => {
+  const handlePayWithRazorpay = async() => {
     setShowModal(false);
-    handleProceed(payableAmount);
+    await handleProceed(payableAmount);
   };
 
   const handlePayWithWallet = async () => {

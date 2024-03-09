@@ -61,7 +61,6 @@ const slotExit = async (req, res) => {
         const totalTime = Date.now() - inTimeInt;
         console.log(totalTime);
         const minutes = Math.floor((totalTime % 3600000) / 60000);
-        slot.inTime = "";
         slot.save();
         res.status(200).json({
         Success: "Slot Exit Successful!",

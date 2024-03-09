@@ -40,7 +40,7 @@ const SlotEntry = () => {
     });
     const data = await slotEntry.json();
     console.log(data);
-    // await redirect();
+    await redirect();
   };
   return (
     <div className="h-[400px] w-[400px] m-auto mt-[200px]">
