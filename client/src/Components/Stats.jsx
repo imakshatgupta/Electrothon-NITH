@@ -19,7 +19,7 @@ const stats = [
 ];
 
 const Stats = () => (
-  <section className={`flex flex-row flex-wrap shadow-md`}>
+  <section className={`flex flex-row flex-wrap shadow-inner`}>
     {stats.map((stat) => (
       <div
         key={stat.id}

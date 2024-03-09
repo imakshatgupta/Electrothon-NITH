@@ -82,7 +82,7 @@ const FeatureCard = ({ icon, title, content, index }) => (
 const Business = () => (
   <section
     id="features"
-    className={`${layout.section} pl-[150px] m-[100px] text-black bg-white shadow-md`}
+    className={`${layout.section} pl-[150px] m-[100px] text-black bg-white`}
 
   >
     <div className={layout.sectionInfo}>
