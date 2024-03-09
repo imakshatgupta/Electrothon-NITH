@@ -1,18 +1,19 @@
 const Slot = require("../models/parkSpaceModel");
 
 const addSlot = async (req, res) => {
-  const { slotNo } = req.body;
-  const slot = await Slot.create({
-    slotNo,
-  });
-  if (slot) {
+  try {
+    for (let slotNo = 1; slotNo <= 69; slotNo++) {
+      await Slot.create({ slotNo });
+    }
     res.status(201).json({
-      Success: "Slot Added Successfully!",
+      Success: "Slots Added Successfully!",
     });
-  } else {
-    res.status(400);
+  } catch (error) {
+    console.error("Error:", error.message);
+    res.status(400).json({ error: "Failed to add slots" });
   }
 };
+
 
 const allSlot = async (req, res) => {
   const slot = await Slot.find();

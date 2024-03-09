@@ -1,7 +1,6 @@
 import React from "react";
 import { Scanner } from "@yudiel/react-qr-scanner";
 import { useNavigate } from "react-router-dom";
-import { to } from "@react-spring/web";
 import { toast } from "react-toastify";
 
 
@@ -14,6 +13,18 @@ const SlotEntry = () => {
     history("/admin");
     window.location.reload();
   };
+
+  const add = async () => {
+    const response = await fetch("http://localhost:8000/parking/addSlot",{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+  }
+
 
   const qrData = async (text) => {
     const slotBooking = JSON.parse(text);
@@ -29,7 +40,7 @@ const SlotEntry = () => {
     });
     const data = await slotEntry.json();
     console.log(data);
-    await redirect();
+    // await redirect();
   };
   return (
     <div className="h-[400px] w-[400px] m-auto mt-[200px]">

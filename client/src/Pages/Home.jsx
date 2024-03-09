@@ -5,6 +5,7 @@ import Business from '../Components/Buisness'
 import Navbar from '../Components/Navbar'
 import Testimonials from '../Components/Testimonials'
 import Footer from '../Components/Footer'
+import Working from '../Components/Working'
 
 const Home = () => {
 
@@ -14,6 +15,7 @@ const Home = () => {
         <Hero/>
         <Stats/>
         <Business/>
+        <Working/>
         <Testimonials/>
         <Footer/>
     </div>
