@@ -24,35 +24,22 @@ const allSlot = async (req, res) => {
 };
 
 const slotEntry = async (req, res) => {
-  console.log(req.body.slotId);
-  try {
-    const alreadySlot = await Slot.findOne({ slotNo: req.body.slotId });
-    console.log(alreadySlot);
-    if (alreadySlot) {
-      return res.status(201).json({
-        Success: "Already Booked"
-      });
-    }
-
-    const slot = await Slot.create({
-      inTime: Date.now(),
-      slotNo: req.body.slotId,
+  const alreadySlot = await Slot.find({ slotNo: req.body.slotId });
+  if (alreadySlot.length > 0) {
+    return res.status(201).json({
+      Success: "Already Booked"
     });
-
-    if (slot) {
-      return res.status(201).json({
-        Success: "Slot Entry Successful!",
-      });
-    } else {
-      return res.status(400).json({
-        Error: "Failed to create slot entry"
-      });
-    }
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({
-      Error: "Internal Server Error"
+  }
+  const slot = await Slot.create({
+    inTime: Date.now(),
+    slotNo: req.body.slotId,
+  });
+  if (slot) {
+    res.status(201).json({
+      Success: "Slot Entry Successful!",
     });
+  } else {
+    res.status(400);
   }
 };
 
