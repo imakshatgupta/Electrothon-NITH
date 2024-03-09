@@ -78,10 +78,17 @@ const Slot = () => {
   return (
     <div className="container mx-auto px-4">
       <Navbar />
-      <h2 className="text-5xl font-bold text-center p-[100px] mb-4">Slots</h2>
-      <h3>Current Price for Slot: {price}</h3>
-      <h3>Free Slots: {freeSlot}</h3>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      <h2 className="text-5xl font-bold text-center p-[10px] mb-4">Slots</h2>
+      <div className="flex justify-evenly items-center p-[20px]">
+        <h3>
+          <span className="font-bold"> Current Price for Slot</span> : Rs.{" "}
+          {price}/hr
+        </h3>
+        <h3>
+          <span className="font-bold">Free Slots </span> : {freeSlot}
+        </h3>
+      </div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-12 gap-4">
         {slots.map((slot) => (
           <div
             key={slot.slotNo}
@@ -90,7 +97,7 @@ const Slot = () => {
               slot.isFree ? "bg-green-500" : "bg-red-400"
             }`}
           >
-            <p className="font-bold text-[50px] text-center">{slot.slotNo}</p>
+            <p className="font-bold text-[20px] text-center">{slot.slotNo}</p>
           </div>
         ))}
       </div>
