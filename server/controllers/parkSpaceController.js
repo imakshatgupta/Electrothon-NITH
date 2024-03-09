@@ -24,6 +24,12 @@ const allSlot = async (req, res) => {
 };
 
 const slotEntry = async (req, res) => {
+  const alreadySlot = await Slot.find({slotNo : req.body.slotId})
+  if(alreadySlot){
+    res.status(201).json({
+      Success: "Already Booked"
+    })
+  }
   const slot = await Slot.create({
     inTime: Date.now(),
     slotNo: req.body.slotId,
@@ -39,7 +45,7 @@ const slotEntry = async (req, res) => {
 
 const slotExit = async (req, res) => {
     const id = req.body.id;
-    const slot = await Slot.findById(id);
+    const slot = await Slot.findById({slotNo: id});
     if (slot) {
         const inTime = slot.inTime;
         const inTimeInt = parseInt(inTime);
