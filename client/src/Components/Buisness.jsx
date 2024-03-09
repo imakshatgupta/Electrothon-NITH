@@ -33,7 +33,7 @@ const styles = {
     "font-poppins font-semibold xs:text-[48px] text-[40px] text-black xs:leading-[76.8px] leading-[66.8px] w-full",
   paragraph:
     "font-poppins font-normal text-dimWhite text-[18px] leading-[30.8px]",
-  flexCenter: "flex justify-center items-center",
+  flexCenter: "flex justify-center",
   flexStart: "flex justify-center items-start",
   paddingX: "sm:px-16 px-6",
   paddingY: "sm:py-16 py-6",
@@ -67,7 +67,7 @@ const FeatureCard = ({ icon, title, content, index }) => (
     } feature-card`}
   >
     <div
-      className={`w-[64px] h-[64px] rounded-full ${styles.flexCenter} bg-dimBlue`}
+      className={`w-[64px] h-[64px] ${styles.flexCenter} bg-dimBlue`}
     >
       <img src={icon} alt="star" className="w-[50%] h-[50%] object-contain" />
     </div>
@@ -82,7 +82,7 @@ const FeatureCard = ({ icon, title, content, index }) => (
 const Business = () => (
   <section
     id="features"
-    className={`${layout.section} p-[100px] text-black bg-white`}
+    className={`${layout.section} pl-[150px] text-black bg-white`}
     data-aos="fade-up"
   >
     <div className={layout.sectionInfo}>
