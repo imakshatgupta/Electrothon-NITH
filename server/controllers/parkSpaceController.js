@@ -25,25 +25,34 @@ const allSlot = async (req, res) => {
 };
 
 const slotEntry = async (req, res) => {
-  const id = req.body.slotId;
-  const carOwnerId = req.body.carOwner;
-  const slot = await Slot.findById(id);
-  if (slot) {
-    slot.occupied = true;
-    slot.carOwner = carOwnerId;
-    slot.inTime = Date.now();
-    slot.save();
-    res.status(200).json({
-      Success: "Slot Entry Successful!",
+  try {
+    const id = req.body.slotId;
+
+    const slot = await Slot.findOne({slotNo:id});
+    if (slot) {
+      slot.occupied = true;
+      slot.inTime = Date.now();
+      await slot.save(); // Need to await the save operation
+      return res.status(200).json({
+        Success: "Slot Entry Successful!",
+      });
+    } else {
+      return res.status(400).json({
+        Error: "Slot not found",
+      });
+    }
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({
+      Error: "Internal Server Error",
     });
-  } else {
-    res.status(400);
   }
 };
 
+
 const slotExit = async (req, res) => {
     const id = req.body.id;
-    const slot = await Slot.findById(id);
+    const slot = await Slot.findOne({slotNo:id});
     if (slot) {
         slot.occupied = false;
         slot.carOwner = "";

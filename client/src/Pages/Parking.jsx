@@ -7,6 +7,9 @@ import Step2 from "../assets/Step2.png";
 import Step3 from "../assets/Step3.png";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import parkGif from "../assets/dribbble_2.gif"
+import parkGif2 from "../assets/ANIM_02.gif"
+import pk from "../assets/pk.gif"
 
 const Parking = () => {
   const isLoggedIn = localStorage.getItem("token") !== null;
@@ -25,7 +28,7 @@ const Parking = () => {
       {/* <Hero/> */}
       <section
         id="home"
-        className="flex justify-between items-center px-12 py-6 bg-white"
+        className="flex justify-between items-center px-12 py-6 bg-[rgb(253,186,140)]"
       >
         <div className="flex flex-col flex-1">
           <div className="mb-8">
@@ -55,6 +58,11 @@ const Parking = () => {
         </div>
         <div className="flex-1">
           <img src={park} alt="Hero" className="w-[600px] object-contain" />
+        </div>
+      </section>
+      <section className="flex justify-center items-center">
+        <div className="border shadow-xl">
+        <img src={parkGif} className="h-[300px] p-[20px]"/>
         </div>
       </section>
       {/*/ Working */}

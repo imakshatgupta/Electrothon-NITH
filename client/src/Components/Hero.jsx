@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="flex justify-between items-center  bg-white p-[100px] pb-[50px]"
+      className="flex justify-between items-center  bg-[rgb(253,186,140)] p-[100px] pb-[50px] shadow-md"
     >
       <div className="flex flex-col flex-1">
         <div className="mb-8">
