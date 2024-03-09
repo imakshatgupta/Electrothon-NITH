@@ -47,13 +47,13 @@ export const layout = {
   sectionReverse: `flex md:flex-row flex-col-reverse ${styles.paddingY}`,
   sectionImgReverse: `flex-1 flex ${styles.flexCenter} md:mr-10 mr-0 md:mt-0 mt-10 relative`,
   sectionImg: `flex-1 flex ${styles.flexCenter} md:ml-10 ml-0 md:mt-0 mt-10 relative`,
-  sectionInfo: `flex-1 ${styles.flexStart} flex-col`,
+  sectionInfo: `flex-1 ${styles.flexStart}  flex-col`,
 };
 
 const Button = ({ styles }) => (
   <button
     type="button"
-    className={`py-4 px-6 font-poppins font-medium text-[18px] text-primary bg-blue-500 rounded-[10px] outline-none ${styles}`}
+    className={`py-4 px-6 font-poppins font-medium text-[18px] text-white bg-black rounded-[10px] outline-none ${styles}`}
     data-aos="fade-up"
   >
     Get Started
