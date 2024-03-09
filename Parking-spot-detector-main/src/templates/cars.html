@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Parking Spot Detector</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head>
+
+<body>
+ <div class="main">
+     <h1> Parking spot detector</h1>
+    <!-- <form action="" method="post" enctype="multipart/form-data"> -->
+      <!-- <button style="margin-left: 12px" type="submit">Submit</button> -->
+      <img src="{{ url_for('video_feed') }}" width="100%">
+
+      <p>Current Ticket Price: <span id="price">Loading...</span></p>
+      <p>Number of Free Slots: <span id="freeslots">Loading...</span></p>
+      <p>Free Slots: <span id="slots">Loading...</span></p>
+
+    <!-- </form> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        function updatePrice(){
+            $.get("/update", function(data){
+                $("#price").text(data.price);
+                $("#freeslots").text(data.freeslots);
+                $("#slots").text(data.slots);
+            });
+        }
+        setInterval(updatePrice, 1000)
+        updatePrice()
+
+    </script>
+
+ </div>
+</body>
+</html>
