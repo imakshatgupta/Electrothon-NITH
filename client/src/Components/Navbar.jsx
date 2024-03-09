@@ -23,7 +23,7 @@ export default function Navbar() {
             to="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
-            <img src={logo} className="h-20 w-[300px]" alt="Park&Go Logo" />
+            <img src={logo} className="h-15 w-[300px]" alt="Park&Go Logo" />
           </Link>
           <div className="flex items-center space-x-6 rtl:space-x-reverse">
             <Link

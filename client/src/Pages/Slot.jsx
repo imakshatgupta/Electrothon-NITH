@@ -83,7 +83,7 @@ const Slot = () => {
       <h2 className="text-5xl font-bold text-center p-[100px] mb-4">Slots</h2>
       <h3>Current Price for Slot: {price}</h3>
       <h3>Free Slots: {freeSlot}</h3>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-12 gap-4">
         {slots.map((slot) => (
           <div
             key={slot.slotNo}

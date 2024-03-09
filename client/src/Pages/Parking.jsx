@@ -61,7 +61,7 @@ const Parking = () => {
         </div>
       </section>
       <section className="flex justify-center items-center">
-        <div className="border shadow-md">
+        <div className="border shadow-xl">
         <img src={parkGif} className="h-[300px] p-[20px]"/>
         </div>
       </section>
