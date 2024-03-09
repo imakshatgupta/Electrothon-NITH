@@ -90,19 +90,25 @@ const Slot = () => {
           <span className="font-bold">Free Slots </span> : {freeSlot}
         </h3>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-7 gap-4">
-  {slots.map((slot) => (
-    <div
-      key={slot.slotNo}
-      onClick={() => handleSlotBook(slot.slotNo)}
-      className={`border rounded-md p-4 cursor-pointer ${
-        slot.isFree ? "bg-green-500" : "bg-red-400"
-      }`}
-    >
-      <p className="font-bold text-[20px] text-center">{slot.slotNo}</p>
-    </div>
-  ))}
- </div>
+      <div className="grid grid-cols-6 gap-4">
+        {[...Array(6)].map((_, colIndex) => (
+          <div key={colIndex} className="grid grid-cols-1 gap-4">
+            {slots.slice(colIndex * 10, (colIndex + 1) * 10).map((slot, index) => (
+              <div
+                key={slot.slotNo}
+                onClick={() => handleSlotBook(slot.slotNo)}
+                className={`border rounded-md p-4 cursor-pointer ${
+                  slot.isFree ? "bg-green-500" : "bg-red-400"
+                }`}
+              >
+                <p className="font-bold text-[20px] text-center">
+                  {colIndex * 12 + index + 1}
+                </p>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
 
       {/* Modal */}
       {isModalOpen && (
