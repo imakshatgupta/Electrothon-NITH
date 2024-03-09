@@ -11,11 +11,11 @@ const customStyles = {
   heading2:
     "font-poppins font-semibold xs:text-[48px] text-[40px] text-black xs:leading-[76.8px] leading-[66.8px] w-full",
   paragraph:
-    "font-poppins font-normal text-dimWhite text-[18px] leading-[30.8px]",
+    "text-gray-500",
   flexCenter: "flex  justify-center items-center",
   flexStart: "flex justify-center items-start",
   paddingX: "sm:px-16 px-6",
-  paddingY: "sm:py-16 py-6",
+  paddingY: "pb-6",
   padding: "sm:px-16 px-6 sm:py-12 py-4",
   marginX: "sm:mx-16 mx-6",
   marginY: "sm:my-16 my-6",
@@ -35,24 +35,12 @@ const footerLinks = [
     links: [
       {
         name: "Content",
-        link: "https://www.hoobank.com/content/",
+        link: "",
       },
       {
         name: "How it Works",
-        link: "https://www.hoobank.com/how-it-works/",
-      },
-      {
-        name: "Create",
-        link: "https://www.hoobank.com/create/",
-      },
-      {
-        name: "Explore",
-        link: "https://www.hoobank.com/explore/",
-      },
-      {
-        name: "Terms & Services",
-        link: "https://www.hoobank.com/terms-and-services/",
-      },
+        link: "",
+      }
     ],
   },
   {
@@ -60,24 +48,13 @@ const footerLinks = [
     links: [
       {
         name: "Help Center",
-        link: "https://www.hoobank.com/help-center/",
+        link: "",
       },
       {
         name: "Partners",
-        link: "https://www.hoobank.com/partners/",
+        link: "",
       },
-      {
-        name: "Suggestions",
-        link: "https://www.hoobank.com/suggestions/",
-      },
-      {
-        name: "Blog",
-        link: "https://www.hoobank.com/blog/",
-      },
-      {
-        name: "Newsletters",
-        link: "https://www.hoobank.com/newsletters/",
-      },
+
     ],
   },
   {
@@ -119,16 +96,16 @@ const socialMedia = [
 
 const Footer = () => (
   <section
-    className={`${customStyles.flexCenter} ${customStyles.paddingY} flex-col bg-white`}
-    data-aos="fade-up"
+    className={`${customStyles.flexCenter} ${customStyles.paddingY} flex-col bg-white px-6`}
   >
     <div className={`${customStyles.flexStart} md:flex-row flex-col  w-full`}>
       <div className="flex-[1] flex flex-col justify-start mr-10">
+    
         <h1 className="text-[42px] font-bold text-black">
-          <img  src={logo} alt="" />
+          <img  src={logo} alt="" className="w-[400px]" />
         </h1>
         <p
-          className={`${customStyles.paragraph} mt-4 max-w-[312px] ml-10 text-black`}
+          className={`${customStyles.paragraph} mt-4 pl-4 text-black`}
         >
           A new way to make the payments easy, reliable and secure.
         </p>
