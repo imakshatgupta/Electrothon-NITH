@@ -6,6 +6,7 @@ import Navbar from '../Components/Navbar'
 import Testimonials from '../Components/Testimonials'
 import Footer from '../Components/Footer'
 import Working from '../Components/Working'
+import RenImage from '../Components/RenImage'
 
 const Home = () => {
 

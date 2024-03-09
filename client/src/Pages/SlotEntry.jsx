@@ -17,6 +17,7 @@ const SlotEntry = () => {
 
   const qrData = async (text) => {
     const slotBooking = JSON.parse(text);
+    console.log("hiiiiiiii")
     const slotEntry = await fetch("http://localhost:8000/parking/slotEntry", {
       method: "POST",
       headers: {
@@ -27,7 +28,7 @@ const SlotEntry = () => {
     });
     const data = await slotEntry.json();
     console.log(data);
-    await redirect();
+    // await redirect();
   };
   return (
     <div className="h-[400px] w-[400px] m-auto mt-[200px]">
