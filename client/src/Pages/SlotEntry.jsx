@@ -23,9 +23,7 @@ const SlotEntry = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        slotId: slotBooking.slotId,
-        carOwner: user._id,
-      }),
+        slotId: slotBooking.slotId,      }),
     });
     const data = await slotEntry.json();
     console.log(data);
