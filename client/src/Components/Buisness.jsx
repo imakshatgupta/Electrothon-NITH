@@ -82,8 +82,8 @@ const FeatureCard = ({ icon, title, content, index }) => (
 const Business = () => (
   <section
     id="features"
-    className={`${layout.section} pl-[150px] text-black bg-white`}
-    data-aos="fade-up"
+    className={`${layout.section} pl-[150px] text-black bg-white shadow-`}
+
   >
     <div className={layout.sectionInfo}>
       <h2 className={styles.heading2}>Find Your Perfect Ride with Us</h2>
