@@ -9,6 +9,7 @@ import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import parkGif from "../assets/dribbble_2.gif"
 import parkGif2 from "../assets/ANIM_02.gif"
+import pk from "../assets/pk.gif"
 
 const Parking = () => {
   const isLoggedIn = localStorage.getItem("token") !== null;
@@ -59,10 +60,9 @@ const Parking = () => {
           <img src={park} alt="Hero" className="w-[600px] object-contain" />
         </div>
       </section>
-      <section>
-        <div className="flex gap-2">
-        <img src={parkGif} className="w-[400px] h-[300px]"/>
-        <img src={parkGif2} className="w-[400px] h-[300px]"/>
+      <section className="flex justify-center items-center">
+        <div className="border shadow-md">
+        <img src={parkGif} className="h-[300px] p-[20px]"/>
         </div>
       </section>
       {/*/ Working */}

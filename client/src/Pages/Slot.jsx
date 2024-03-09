@@ -65,6 +65,8 @@ const Slot = () => {
 
     const tempBookingData = {
       slotId: selectedSlot.slotNo,
+      carOwner: "60d5ecf5d4b2f8a6f1d7c3f1",
+      carRegistrationNumber: "ABCD1",
     };
 
     setBookingData(tempBookingData);
