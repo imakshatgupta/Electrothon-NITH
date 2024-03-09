@@ -23,7 +23,7 @@ const Slot = () => {
       const response = await axios.get("http://192.168.163.177:5000/update");
       const data = response.data.slots;
       const currentPrice = response.data.price;
-      const freeSlot = response.data.freeslots;
+      const freeSlot = response.data.freeslots; 
       console.log(data);
       setFreeSlot(freeSlot);
       setPrice(currentPrice);
