@@ -68,7 +68,7 @@ export default function RentForm() {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("http://localhost:8000/listings/listNewCar", {
+    const res = await fetch("https://electrothon-nith.onrender.com/listings/listNewCar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

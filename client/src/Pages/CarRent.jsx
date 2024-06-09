@@ -12,7 +12,7 @@ const CarRent = () => {
 
   const getCars = async () => {
     try {
-      const res = await fetch("http://localhost:8000/listings/getAllCar");
+      const res = await fetch("https://electrothon-nith.onrender.com/listings/getAllCar");
       const data = await res.json();
       setCars(data);
       console.log(data)

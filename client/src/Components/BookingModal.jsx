@@ -50,7 +50,7 @@ export default function BookingModal({
   const handlePayment = async () => {
 
     const cryptoAmount = rentPrice * 0.011;
-    const user = await fetch("http://localhost:8000/users/getUser", {
+    const user = await fetch("https://electrothon-nith.onrender.com/users/getUser", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -62,7 +62,7 @@ export default function BookingModal({
     await makeCryptoPayment(cryptoAddress, totalPayable*0.011);
 
     const saveWallet = await axios.post(
-      "http://localhost:8000/listings/bookings/saveWallet",
+      "https://electrothon-nith.onrender.com/listings/bookings/saveWallet",
       {
         id,
         carOwnerId,
@@ -81,7 +81,7 @@ export default function BookingModal({
       order_id: data.orderDetails.razorpayOrderId,
       handler: async (response) => {
         try {
-          const verifyUrl = `http://localhost:8000/listings/verify`;
+          const verifyUrl = `https://electrothon-nith.onrender.com/listings/verify`;
 
           const verifyData = {
             razorpay_order_id: response.razorpay_order_id,
@@ -91,7 +91,7 @@ export default function BookingModal({
           await axios.post(verifyUrl, verifyData);
           console.log(id, carOwnerId);
           const save = await axios.post(
-            "http://localhost:8000/listings/bookings/saveBooking",
+            "https://electrothon-nith.onrender.com/listings/bookings/saveBooking",
             {
               id,
               carOwnerId,
@@ -145,7 +145,7 @@ export default function BookingModal({
     try {
       console.log(id, carOwnerId);
       const response = await axios.post(
-        "http://localhost:8000/listings/bookings/addBooking",
+        "https://electrothon-nith.onrender.com/listings/bookings/addBooking",
         {
           hours,
           rentPrice:totalPayable,

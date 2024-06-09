@@ -31,7 +31,7 @@ const SlotExit = () => {
       order_id: data.orderDetails.razorpayOrderId,
       handler: async (response) => {
         try {
-          const verifyUrl = `http://localhost:8000/listings/verify`;
+          const verifyUrl = `https://electrothon-nith.onrender.com/listings/verify`;
 
           const verifyData = {
             razorpay_order_id: response.razorpay_order_id,
@@ -55,7 +55,7 @@ const SlotExit = () => {
   const handleProceed = async (data) => {
     try {
       const response = await axios.post(
-        "http://localhost:8000/listings/bookings/addBooking",
+        "https://electrothon-nith.onrender.com/listings/bookings/addBooking",
         {
           rentPrice: data,
         }
@@ -71,7 +71,7 @@ const SlotExit = () => {
   const qrData = async (text) => {
     const slotBooking = JSON.parse(text);
     console.log(slotBooking.slotId);
-    const slotExit = await fetch("http://localhost:8000/parking/slotExit", {
+    const slotExit = await fetch("https://electrothon-nith.onrender.com/parking/slotExit", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

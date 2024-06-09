@@ -23,7 +23,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { userName, password } = formData;
-    const res = await fetch("http://localhost:8000/users/login", {
+    const res = await fetch("https://electrothon-nith.onrender.com/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

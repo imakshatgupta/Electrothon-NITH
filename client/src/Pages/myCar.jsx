@@ -14,7 +14,7 @@ const MyCar = () => {
   }, []);
 
   const getCars = async () => {
-    const res = await fetch("http://localhost:8000/listings/myCar", {
+    const res = await fetch("https://electrothon-nith.onrender.com/listings/myCar", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -30,7 +30,7 @@ const MyCar = () => {
     const accounts = await window.ethereum.request({
       method: "eth_requestAccounts",
     });
-    const res = await fetch("http://localhost:8000/users/addWallet", {
+    const res = await fetch("https://electrothon-nith.onrender.com/users/addWallet", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

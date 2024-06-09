@@ -3,48 +3,55 @@ import QRCode from "qrcode.react";
 import Navbar from "../Components/Navbar";
 import { toast } from "react-toastify";
 import axios from "axios";
-import slotsData from "./data.json";
 
 const Slot = () => {
   const [slots, setSlots] = useState([]);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bookingData, setBookingData] = useState(null);
-  const [price, setPrice] = useState("");
+  const [price, setPrice] = useState("100"); // Update this if you have an endpoint for the price
   const [freeSlot, setFreeSlot] = useState(0);
-  const [incomingSlot, setIncomingSlot] = useState([]);
 
   useEffect(() => {
     getSlot();
-  }, [incomingSlot]);
+    setupSSE();
+  }, [slots]);
 
   const getSlot = async () => {
     try {
-      const response = await axios.get("http://192.168.163.177:5000/update");
-      const data = response.data.slots;
-      const currentPrice = response.data.price;
-      const freeSlots = response.data.freeslots; 
-      console.log(data);
-      setFreeSlot(freeSlots);
-      setPrice(currentPrice);
-      setIncomingSlot(data);
+      const response = await axios.get("https://parkingspotdetector.onrender.com/check_parking");
+      const data = response.data;
+      updateSlots(data);
     } catch (error) {
       console.error("Error fetching slots:", error);
     }
   };
 
-  useEffect(() => {
-    if (incomingSlot && incomingSlot.length > 0) {
-      const updatedSlots = slotsData.slots.map((slot) => {
-        const matchingSlot = incomingSlot.find((s) => s === slot.slotNo);
-        if (matchingSlot) {
-          return { ...slot, isFree: !matchingSlot.isFree };
-        }
-        return slot;
-      });
-      setSlots(updatedSlots);
-    }
-  }, [incomingSlot]);
+  const updateSlots = (data) => {
+    const freeSlots = data.free_spaces;
+    const slotsStatus = data.space_status;
+    setFreeSlot(freeSlots);
+
+    // Convert the response to the format expected by the frontend
+    const formattedSlots = Object.keys(slotsStatus).map((key) => ({
+      slotNo: parseInt(key),
+      isFree: slotsStatus[key].status === "Empty",
+    }));
+    setSlots(formattedSlots);
+  };
+
+  const setupSSE = () => {
+    const eventSource = new EventSource("https://parkingspotdetector.onrender.com/sse_parking_status");
+    eventSource.onmessage = (event) => {
+      const parkingData = JSON.parse(event.data);
+      updateSlots(parkingData);
+    };
+
+    eventSource.onerror = (error) => {
+      console.error("EventSource failed:", error);
+      eventSource.close();
+    };
+  };
 
   const handleSlotBook = (slotNo) => {
     const selectedSlot = slots.find((slot) => slot.slotNo === slotNo);
@@ -83,11 +90,10 @@ const Slot = () => {
       <h2 className="text-5xl font-bold text-center p-[10px] mb-4">Slots</h2>
       <div className="flex justify-evenly items-center p-[20px]">
         <h3>
-          <span className="font-bold"> Current Price for Slot</span> : Rs.{" "}
-          {price}/hr
+          <span className="font-bold">Current Price for Slot</span> : Rs. {price}/hr
         </h3>
         <h3>
-          <span className="font-bold">Free Slots </span> : {freeSlot}
+          <span className="font-bold">Free Slots</span> : {freeSlot}
         </h3>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-12 gap-4">
@@ -130,16 +136,14 @@ const Slot = () => {
       {bookingData && (
         <div className="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-75">
           <div className="bg-white p-6 rounded-md shadow-md flex flex-col justify-center items-center">
-            <p className="text-3xl font-semibold mb-4 leading-snug">
-              Booking Successful!
-            </p>
+            <p className="text-3xl font-semibold mb-4 leading-snug">Booking Successful!</p>
             <QRCode
               value={JSON.stringify(bookingData)}
               style={{ width: "200px", height: "200px" }}
             />
             <button
               onClick={() => setBookingData(null)}
-              className="mt-4  px-4 py-2 bg-blue-500 text-white rounded-md"
+              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md"
             >
               Close
             </button>

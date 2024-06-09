@@ -15,7 +15,7 @@ const SlotEntry = () => {
   };
 
   const add = async () => {
-    const response = await fetch("http://localhost:8000/parking/addSlot",{
+    const response = await fetch("https://electrothon-nith.onrender.com/parking/addSlot",{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,7 @@ const SlotEntry = () => {
 
   const qrData = async (text) => {
     const slotBooking = JSON.parse(text);
-    const slotEntry = await fetch("http://localhost:8000/parking/slotEntry", {
+    const slotEntry = await fetch("https://electrothon-nith.onrender.com/parking/slotEntry", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

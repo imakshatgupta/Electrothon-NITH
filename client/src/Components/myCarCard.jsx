@@ -15,7 +15,7 @@ const Card = ({ id,carName, ownerName, kms, image1, image2, available, available
   const handleClick = async(id) => {
     console.log(id);
 
-    const res=await axios.post("http://localhost:8000/listings/removeCar",{id:id},{
+    const res=await axios.post("https://electrothon-nith.onrender.com/listings/removeCar",{id:id},{
       headers:{
         "Content-Type":"application/json",
         "x-auth-token":user.email
