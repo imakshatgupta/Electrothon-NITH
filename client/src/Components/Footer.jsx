@@ -66,7 +66,7 @@ const footerLinks = [
       },
       {
         name: "Admin Panel",
-        link: "http://localhost:5173/admin",
+        link: "https://parkndgo.netlify.app/admin",
       },
     ],
   },

@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ["http://localhost:5173","https://parkndgo.netlify.app/"],
     credentials: true,
   })
 );
@@ -103,7 +103,7 @@ const PORT = process.env.PORT || 8000;
 dbConnect();
 
 app.get("/", async (req, res) => {
-  res.redirect("http://localhost:5173");
+  res.redirect("https://parkndgo.netlify.app");
 });
 
 app.use("/users", userRoutes);
